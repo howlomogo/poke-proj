@@ -5,3 +5,5 @@ Playing around with the pokeAPI
 
 TODOS
 - Add features
+
+testing ssh user still works
