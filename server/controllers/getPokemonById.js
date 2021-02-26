@@ -31,7 +31,11 @@ exports.getPokemonById = async function getPokemonById(req, res) {
         id: pokemonInfo.id,
         abilities: pokemonInfo.abilities,
         height: pokemonInfo.height,
-        image: _.get(pokemonInfo, 'sprites.other.official-artwork.front_default', '')
+        weight: pokemonInfo.weight,
+        image: _.get(pokemonInfo, 'sprites.other.official-artwork.front_default', ''),
+        moves: pokemonInfo.moves,
+        types: pokemonInfo.types,
+        stats: pokemonInfo.stats
       })
     }
   } catch(err) {

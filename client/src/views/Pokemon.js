@@ -34,7 +34,11 @@ function Pokemon() {
           id: res.data.id,
           abilities: res.data.abilities,
           height: res.data.height,
-          image: res.data.image
+          weight: res.data.weight,
+          image: res.data.image,
+          moves: res.data.moves,
+          types: res.data.types,
+          stats: res.data.stats
         })
       })
       .catch(err => {
@@ -63,7 +67,30 @@ function Pokemon() {
               <h1>Name {pokemonData.name}</h1>
               <img src={pokemonData.image} />
               <h1>Height {pokemonData.height}</h1>
+              <h1>Weight {pokemonData.weight}</h1>
               <h1>Id {pokemonData.id}</h1>
+
+              {pokemonData.stats.map(stat => {
+                return (
+                  <React.Fragment>
+                    <h1>{stat.stat.name}</h1>
+                    <h1>{stat.base_stat}</h1>
+                  </React.Fragment>
+                )
+              })}
+
+              {pokemonData.types.map(type => {
+                return (
+                  <h1>{type.type.name}</h1>
+                )
+              })}
+
+              {pokemonData.moves.map(move => {
+                return (
+                  // You could colour these to be the pokemons primary type. We could colour them to the move type but will leave for now
+                  <span class="badge badge-pill badge-primary mr-1">{move.move.name}</span>
+                )
+              })}
             </div>
           }
         </div>

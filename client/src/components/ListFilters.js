@@ -33,7 +33,7 @@ function ListFilters(props) {
   }, [])
 
   return (
-    <div className="bg-dark mb-4">
+    <div className="bg-black mb-4">
       <div className="container">
         <div className="row">
           <div className="col-6">
