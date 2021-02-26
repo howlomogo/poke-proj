@@ -79,7 +79,7 @@ const List = () => {
   }
   
   return (
-    <div>
+    <React.Fragment>
       {/* Filters */}
       <ListFilters
         getResults={getResults}
@@ -90,49 +90,51 @@ const List = () => {
         defaultPageNumber={defaultPageNumber}
       />
 
-      {/* Loader */}
-      {resultsLoading ? (
-        <div className="container" style={{'height': '300px'}}>
-          <div className="row mt-4">
-            <div className="col-12 text-center ">
-              <Loader />
-            </div>
-          </div>
-        </div>
-      ) : (
-        <React.Fragment>
-          {/* Results */}
-          {resultsData.results &&
-            <div className="container">
-              <div className="row mt-4">
-                {resultsData.results.map(pokemon => {
-                  return (
-                    <ListItem
-                      id={pokemon.id}
-                      name={pokemon.name}
-                      height={pokemon.height}
-                      image={pokemon.image}
-                      key={pokemon.id}
-                    />
-                  )
-                })}
+      <div className="container mx-auto">
+        {/* Loader */}
+        {resultsLoading ? (
+          <div className="container" style={{'height': '300px'}}>
+            <div className="row mt-4">
+              <div className="col-12 text-center ">
+                <Loader />
               </div>
             </div>
-          }
-        </React.Fragment>
-      )}
+          </div>
+        ) : (
+          <React.Fragment>
+            {/* Results */}
+            {resultsData.results &&
+              <div className="container">
+                <div className="row mt-4">
+                  {resultsData.results.map(pokemon => {
+                    return (
+                      <ListItem
+                        id={pokemon.id}
+                        name={pokemon.name}
+                        height={pokemon.height}
+                        image={pokemon.image}
+                        key={pokemon.id}
+                      />
+                    )
+                  })}
+                </div>
+              </div>
+            }
+          </React.Fragment>
+        )}
 
-      {/* Pagination */}
-      <div className="container">
-        <div className="row">
-          <Pagination
-            getResults={getResults}
-            resultsData={resultsData}
-            resultsLoading={resultsLoading}
-          />
+        {/* Pagination */}
+        <div className="container">
+          <div className="row">
+            <Pagination
+              getResults={getResults}
+              resultsData={resultsData}
+              resultsLoading={resultsLoading}
+            />
+          </div>
         </div>
       </div>
-    </div>
+    </React.Fragment>
   )
 }
 

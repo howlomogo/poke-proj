@@ -12,6 +12,7 @@ import Header from './components/Header'
 import List from './views/List'
 import Pokemon from './views/Pokemon'
 import NotFound from './views/NotFound'
+import Footer from './components/Footer'
 
 class App extends Component {
   render() {
@@ -20,26 +21,27 @@ class App extends Component {
         <Router>
           <Header />
 
-          <div className="App">
-            <Switch>
-              <Route exact path="/list">
-                <List />
-              </Route>
+          <Switch>
+            <Route exact path="/list">
+              <List />
+            </Route>
 
-              <Route exact path="/pokemon/:name">
-                <Pokemon />
-              </Route>
+            <Route exact path="/pokemon/:name">
+              <Pokemon />
+            </Route>
 
-              <Route exact path="/">
-                <Home />
-              </Route>
+            <Route exact path="/">
+              <Home />
+            </Route>
 
-              {/* Catch all 404 route */}
-              <Route>
-                <NotFound />
-              </Route>
-            </Switch>
-          </div>
+            {/* Catch all 404 route */}
+            <Route>
+              <NotFound />
+            </Route>
+          </Switch>
+
+          <Footer />
+
         </Router>
       </div>
     )
