@@ -53,15 +53,14 @@ function Pagination(props) {
   }
 
   return (
-    <nav className="mx-auto mb-4">
-      <ul className="pagination mb-0">
+    <nav className="flex mb-8 justify-center">
+      <ul className="flex border-solid border-2 border-red-600 rounded">
         {pagination.active > 1 &&
-          <li className={classNames("page-item",  {
+          <li className={classNames("py-2 px-4 cursor-pointer border-solid border-r border-red-600",  {
             'disabled': props.resultsLoading
           })}>
-            <a className="page-link"
-              onClick={() => props.getResults(pagination.active - 1)}>
-                Previous
+            <a onClick={() => props.getResults(pagination.active - 1)}>
+                Prev
             </a>
           </li>
         }
@@ -70,15 +69,12 @@ function Pagination(props) {
           return (
             <li
               key={item.pageNumber}
-              className={classNames("page-item",  {
-                'active': pagination.active === item.pageNumber,
+              className={classNames("py-2 px-4 cursor-pointer border-solid border-r border-red-600",  {
+                'bg-red-600 text-white': pagination.active === item.pageNumber,
                 'disabled': props.resultsLoading
               })}
             >
-              <a
-                className="page-link"
-                onClick={() => props.getResults(item.pageNumber)}
-              >
+              <a onClick={() => props.getResults(item.pageNumber)}>
                 {item.pageNumber}
               </a>
             </li>
@@ -86,11 +82,10 @@ function Pagination(props) {
         })}
       
         {pagination.active !== pagination.maxLength &&
-          <li className={classNames("page-item",  {
+          <li className={classNames("py-2 px-4 cursor-pointer",  {
             'disabled': props.resultsLoading
           })}>
-            <a className="page-link"
-            onClick={() => props.getResults(pagination.active + 1)}>
+            <a onClick={() => props.getResults(pagination.active + 1)}>
               Next
             </a>
           </li>

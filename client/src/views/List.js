@@ -90,7 +90,7 @@ const List = () => {
         defaultPageNumber={defaultPageNumber}
       />
 
-      <div className="container mx-auto mt-4">
+      <div className="container mx-auto mt-8">
         {/* Loader */}
         {resultsLoading ? (
           <Loader />
@@ -98,7 +98,7 @@ const List = () => {
           <React.Fragment>
             {/* Results */}
             {resultsData.results &&
-              <div className="flex flex-wrap">
+              <div className="flex flex-wrap mb-2">
                 {resultsData.results.map(pokemon => {
                   return (
                     <ListItem
