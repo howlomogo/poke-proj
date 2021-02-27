@@ -6,6 +6,7 @@ const axios = require('axios')
 const _ = require('lodash')
 
 const {getCache, setCache } = require('../helpers/cache.js')
+const { formatDexNumber } = require('../helpers/formatDexNumber')
 
 exports.getResultsListInfo = async function(list) {
   // console.log('---getResultsListInfo')
@@ -30,10 +31,13 @@ exports.getResultsListInfo = async function(list) {
       pokemonInfo = response.data
     }
 
+    const pokedexNumber = formatDexNumber(pokemonInfo.id)
+
     // We can now set what data we want on the front end for the list view
     pokemonArray.push({
       name: pokemonInfo.name,
       id: pokemonInfo.id,
+      pokedexNumber,
       abilities: pokemonInfo.abilities,
       height: pokemonInfo.height,
       image: _.get(pokemonInfo, 'sprites.other.official-artwork.front_default', '') // Todo add placeholder incase image doesn't exist

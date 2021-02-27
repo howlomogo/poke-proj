@@ -25,10 +25,6 @@ exports.getPokemonList = async function(req, res) {
       }
     })
 
-    // console.log(params)
-
-    // console.log(reqUrl)
-
     // Set pokeapi.co url to pull data from, this will also be used as key for storing response in redis
     let pokeApiUrl = `https://pokeapi.co/api/v2/pokemon${reqUrl.search}`
 

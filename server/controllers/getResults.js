@@ -21,13 +21,6 @@ exports.getResults = async function(req, res) {
     const showPerPage = req.query.showPerPage || "20"
     const pageNumber = req.query.pageNumber || "1"
 
-
-    // Page number will be used to fetch FROM "list"
-    // We would say for example if showPerPage is 2 and we want page 3 we want to pull 5 and 6
-    // ^ REMEMBER we are NOT actually using offset at all on the pokeapi.co endpoints
-    // but we will splice it from the results list, those will then be used to fetch the pokemon info
-
-
     let fullResultslist = []
     
     // Lets just check types filter for, but we would need to check if ANY filters are active
@@ -53,13 +46,6 @@ exports.getResults = async function(req, res) {
       fullResultslist = _.sortBy(uniquePokemonList, 'id')
     }
 
-    // We now have the full list or filtered list in list variable
-    // We now would now need to sort out the pagination / limit / offset
-    // For now lets just splice the array by the showPerPage (limit)
-    // and get / return the pokemon info on these
-    // TODO HERE PAGINATION!!!
-
-    // Pagination - showPerPage is useful to add here incase we change the showPerPage on the frontend without submitting then click the pagination
     let pagination = []
     let pageCounter = 1
     
@@ -78,20 +64,6 @@ exports.getResults = async function(req, res) {
 
     const resultsList = fullResultslist.slice(resultsStartPosition, resultsEndPosition)
     const resultsListWithInfo = await getResultsListInfo(resultsList)
-
-
-
-    /**
-     * pagenumber is not set on state, which brings the question should we always be calling getResults from pagination
-     * kinf od thinking we could actually STORE and send to the front end the fullResultsList within the pagination object.
-     * Then IF we click the pagination button on the front end we still pass showPerPage and pageNumber but to a new endpoint pagination
-     * Here we will pass in the fullResultslist we set and handle the resultsListWithInfo in  there as well.
-     * We can then call that pagination endpoint from this getResults still.
-     * ^ Would this work with using URL params?
-     * We would ONLY ever call the pagination route directly IF hitting one of the buttons.
-     */
-
-     console.log(pagination)
 
     res.send({
       results: resultsListWithInfo,

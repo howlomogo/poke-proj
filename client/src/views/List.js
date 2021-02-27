@@ -93,46 +93,35 @@ const List = () => {
       <div className="container mx-auto">
         {/* Loader */}
         {resultsLoading ? (
-          <div className="container" style={{'height': '300px'}}>
-            <div className="row mt-4">
-              <div className="col-12 text-center ">
-                <Loader />
-              </div>
-            </div>
-          </div>
+          <Loader />
         ) : (
           <React.Fragment>
             {/* Results */}
             {resultsData.results &&
-              <div className="container">
-                <div className="row mt-4">
-                  {resultsData.results.map(pokemon => {
-                    return (
-                      <ListItem
-                        id={pokemon.id}
-                        name={pokemon.name}
-                        height={pokemon.height}
-                        image={pokemon.image}
-                        key={pokemon.id}
-                      />
-                    )
-                  })}
-                </div>
-              </div>
+              <React.Fragment>
+                {resultsData.results.map(pokemon => {
+                  return (
+                    <ListItem
+                      id={pokemon.id}
+                      pokedexNumber={pokemon.pokedexNumber}
+                      name={pokemon.name}
+                      height={pokemon.height}
+                      image={pokemon.image}
+                      key={pokemon.id}
+                    />
+                  )
+                })}
+              </React.Fragment>
             }
           </React.Fragment>
         )}
 
         {/* Pagination */}
-        <div className="container">
-          <div className="row">
-            <Pagination
-              getResults={getResults}
-              resultsData={resultsData}
-              resultsLoading={resultsLoading}
-            />
-          </div>
-        </div>
+        <Pagination
+          getResults={getResults}
+          resultsData={resultsData}
+          resultsLoading={resultsLoading}
+        />
       </div>
     </React.Fragment>
   )

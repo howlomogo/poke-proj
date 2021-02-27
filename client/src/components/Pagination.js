@@ -71,7 +71,7 @@ function Pagination(props) {
             <li
               key={item.pageNumber}
               className={classNames("page-item",  {
-                'active': pagination.active == item.pageNumber,
+                'active': pagination.active === item.pageNumber,
                 'disabled': props.resultsLoading
               })}
             >
