@@ -90,7 +90,7 @@ const List = () => {
         defaultPageNumber={defaultPageNumber}
       />
 
-      <div className="container mx-auto">
+      <div className="container mx-auto mt-4">
         {/* Loader */}
         {resultsLoading ? (
           <Loader />
@@ -98,20 +98,19 @@ const List = () => {
           <React.Fragment>
             {/* Results */}
             {resultsData.results &&
-              <React.Fragment>
+              <div className="flex flex-wrap">
                 {resultsData.results.map(pokemon => {
                   return (
                     <ListItem
-                      id={pokemon.id}
+                      key={pokemon.id}
                       pokedexNumber={pokemon.pokedexNumber}
                       name={pokemon.name}
-                      height={pokemon.height}
+                      types={pokemon.types}
                       image={pokemon.image}
-                      key={pokemon.id}
                     />
                   )
                 })}
-              </React.Fragment>
+              </div>
             }
           </React.Fragment>
         )}

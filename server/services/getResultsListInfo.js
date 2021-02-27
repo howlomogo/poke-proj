@@ -38,8 +38,7 @@ exports.getResultsListInfo = async function(list) {
       name: pokemonInfo.name,
       id: pokemonInfo.id,
       pokedexNumber,
-      abilities: pokemonInfo.abilities,
-      height: pokemonInfo.height,
+      types: pokemonInfo.types,
       image: _.get(pokemonInfo, 'sprites.other.official-artwork.front_default', '') // Todo add placeholder incase image doesn't exist
     })
 
