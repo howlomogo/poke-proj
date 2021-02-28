@@ -38,7 +38,7 @@ function ListFilters(props) {
         <div className="container px-4 mx-auto py-8">
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
             <div>
-              <h5 className="font-medium mb-1">Types:</h5>
+              <label className="font-medium mb-1">Types:</label>
 
               <div className="flex flex-wrap">
                 {filterOptions.typeOptions.map(item => {
@@ -68,7 +68,7 @@ function ListFilters(props) {
               </p>
               <button
                 onClick={() => { props.getResults(props.defaultPageNumber)}}
-                className="bg-blue-500 px-4 py-2 rounded text-white shadow mb-2"
+                className="bg-blue-400 px-4 py-2 rounded text-white shadow mb-2"
               >
                 Get Results
               </button>
@@ -77,30 +77,25 @@ function ListFilters(props) {
         </div>
       </div>
 
-      <div className="bg-gray-800">
+      <div className="bg-gray-600 text-gray-100">
         <div className="container px-4 mx-auto py-2">
           <div className="flex justify-between">
 
             <div className="flex items-center">
-              <label className="text-white mr-2">Search: </label>
-              <input
-                placeholder="Will be added in future!"
-                disabled
-                className="p-2 rounded outline-none text-sm"
-              />
+              <span className="font-medium">Showing {props.showingPerPage} of {props.total} results</span>
             </div>
 
             {/* Show per page */}
             <div className="flex items-center">
-              <label className="text-white mr-2">Show per page: </label>
+              <label className="mr-2 font-medium">Show per page: </label>
               <select
                 value={props.showPerPage}
                 onChange={(e) => props.setShowPerPage(e.target.value)}
-                className="p-2 rounded outline-none"
+                className="small-dropdown p-2 rounded outline-none text-gray-500 font-semibold"
               >
-                <option value="5">5</option>
-                <option value="10">10</option>
-                <option value="20">20</option>
+                <option value="6">6</option>
+                <option value="12">12</option>
+                <option value="24">24</option>
               </select>
             </div>
           </div>

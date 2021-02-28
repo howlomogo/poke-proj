@@ -1,5 +1,8 @@
 import classNames from 'classnames'
+import React from 'react'
 import { useState, useEffect, useRef } from 'react'
+import { ReactComponent as LeftArrow } from '../assets/chevron-left-solid.svg'
+import { ReactComponent as RightArrow } from '../assets/chevron-right-solid.svg'
 
 function Pagination(props) {
   let firstUpdate = useRef(true)
@@ -53,45 +56,47 @@ function Pagination(props) {
   }
 
   return (
-    <nav className="flex mb-8 justify-center">
-      <ul className="flex border-solid border-2 border-red-600 rounded">
-        {pagination.active > 1 &&
-          <li className={classNames("py-2 px-4 cursor-pointer border-solid border-r border-red-600",  {
-            'disabled': props.resultsLoading
-          })}>
-            <a onClick={() => props.getResults(pagination.active - 1)}>
-                Prev
-            </a>
-          </li>
-        }
-      
-        {pagination.pages.map((item) => {
-          return (
-            <li
-              key={item.pageNumber}
-              className={classNames("py-2 px-4 cursor-pointer border-solid border-r border-red-600",  {
-                'bg-red-600 text-white': pagination.active === item.pageNumber,
+    <React.Fragment>
+      {pagination.pages.length > 0 &&
+        <nav className="flex mb-12 justify-center text-gray-500">
+          <ul className="flex border-solid border border-gray-500 rounded">
+            {pagination.active > 1 &&
+              <li onClick={() => props.getResults(pagination.active - 1)}
+                className={classNames("py-2 px-4 cursor-pointer border-solid border-r border-gray-300 flex items-center",  {
                 'disabled': props.resultsLoading
-              })}
-            >
-              <a onClick={() => props.getResults(item.pageNumber)}>
-                {item.pageNumber}
-              </a>
-            </li>
-          )
-        })}
-      
-        {pagination.active !== pagination.maxLength &&
-          <li className={classNames("py-2 px-4 cursor-pointer",  {
-            'disabled': props.resultsLoading
-          })}>
-            <a onClick={() => props.getResults(pagination.active + 1)}>
-              Next
-            </a>
-          </li>
-        }
-      </ul>
-    </nav>
+              })}>
+                <LeftArrow className="h-4 text-gray-500" />
+              </li>
+            }
+          
+            {pagination.pages.map((item) => {
+              return (
+                <li
+                  onClick={() => props.getResults(item.pageNumber)}
+                  key={item.pageNumber}
+                  className={classNames("py-2 px-4 cursor-pointer border-solid border-r border-gray-300",  {
+                    'bg-gray-500 text-white': pagination.active === item.pageNumber,
+                    'disabled': props.resultsLoading
+                  })}
+                >
+                  {item.pageNumber}
+                </li>
+              )
+            })}
+          
+            {pagination.active !== pagination.maxLength &&
+              <li
+                onClick={() => props.getResults(pagination.active + 1)}
+                className={classNames("py-2 px-4 cursor-pointer flex items-center",  {
+                'disabled': props.resultsLoading
+              })}>
+                <RightArrow className="h-4 text-gray-500" />
+              </li>
+            }
+          </ul>
+        </nav>
+      }
+    </React.Fragment>
   )
 }
 

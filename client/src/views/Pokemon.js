@@ -60,14 +60,19 @@ function Pokemon() {
           We could not fetch this pokemon - <Link to="/list">Go Back to the list view</Link>
         </div>
       }
-
-      <h3 className="text-3xl capitalize mb-1">{pokemon.name}</h3>
-
-      <hr className="mb-8 border-1 border-dashed border-black" />
       
       {!isLoading && !hasError &&
         <React.Fragment>
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 mb-6">
+
+          <div className="flex items-center justify-between">
+            <h3 className="text-3xl capitalize mb-1">{pokemon.name}</h3>
+            <h3 className="text-3xl capitalize mb-1">{pokemon.pokedexNumber}</h3>
+          </div>
+          
+          <hr className="border-1 border-dashed border-black" />
+
+
+          <div className="grid grid-cols-1 gap-12 md:grid-cols-2 my-10 flex items-center">
             <div>
               <img src={pokemon.image} className="w-2/3 mx-auto" alt="Pokemon" />
             </div>
@@ -77,17 +82,17 @@ function Pokemon() {
 
               {pokemon.stats.map(stat => {
                 return (
-                  <div key={stat.name} className="flex items-center">
+                  <div key={stat.name} className="flex items-center text-lg">
                     <div className="w-3/12">
                       <span className="capitalize">{stat.name}</span>
                     </div>
 
                     <div className="w-2/12 text-right pr-4">
-                      <span className="font-medium">{stat.value}</span>
+                      <span className="font-semibold">{stat.value}</span>
                     </div>
 
-                    <div className="relative pt-1 w-7/12">
-                      <div className="overflow-hidden h-2 text-xs flex rounded bg-pink-200">
+                    <div className="relative w-7/12">
+                      <div className="overflow-hidden h-3 text-xs flex rounded bg-pink-200">
                         <div style={{ 'width': stat.value + '%' }} className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-pink-500" />
                       </div>
                     </div>
@@ -97,37 +102,39 @@ function Pokemon() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-            <div>              
-              <div className="mb-2">
-                <h4 className="text-2xl capitalize mb-1">National pokedex number</h4>
-                <p>{pokemon.pokedexNumber}</p>
-              </div>
+          <hr className="mb-10 border-1 border-dashed border-black" />
 
-              <div className="mb-2">
-                <h4 className="text-2xl capitalize mb-1">Types</h4>
-                
+          <div className="grid grid-cols-1 gap-12 md:grid-cols-2">
+            <div>              
+              <div className="mb-6">
+                <h4 className="text-2xl capitalize font-medium">Types</h4>
+                {/* <hr className="border-1 mb-2 border-dashed border-gray-500 w-2/3" /> */}
+
                 {pokemon.types.map(type => {
                   return (
-                    <p key={type.type.name}>{type.type.name}</p>
+                    <p key={type.type.name} className="capitalize">{type.type.name}</p>
                   )
                 })}
               </div>
 
-              <div className="mb-2">
-                <h4 className="text-2xl capitalize mb-1">Description</h4>
+              <div className="mb-6">
+                <h4 className="text-2xl capitalize font-medium">Description</h4>
+                {/* <hr className="border-1 mb-2 border-dashed border-gray-500 w-2/3" /> */}
+
                 <p>{pokemon.description}</p>
               </div>
 
               <div>
-                <h4 className="text-2xl capitalize mb-1">Measurements</h4>
+                <h4 className="text-2xl capitalize font-medium">Measurements</h4>
+                {/* <hr className="border-1 mb-2 border-dashed border-gray-500 w-2/3" /> */}
+
                 <p>Height: {pokemon.height * 10}cm</p>
                 <p>Weight: {pokemon.weight / 10}kg</p>
               </div>
             </div>
 
             <div>
-              <h4 className="text-2xl capitalize mb-1">Moves</h4>
+              <h4 className="text-2xl capitalize mb-2 font-medium">Moves</h4>
 
               <div className="flex flex-wrap">
                 {pokemon.moves.map(move => {

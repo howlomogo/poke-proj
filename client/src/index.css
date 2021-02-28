@@ -14,3 +14,31 @@
   border-bottom-right-radius: 100%;
   z-index: 0;
 }
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, label {
+  font-family: 'Hind', sans-serif;
+}
+
+/* Custom colors lets just add these here for now */
+.c-bg-gray-1 {
+  background-color: #dfe6e9;
+}
+
+.c-text-gray-3 {
+  color: #636e72;
+}
+
+/* Hacky quick dropdown */
+.small-dropdown {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+  background-repeat: no-repeat;
+  background-position-x: 100%;
+  background-position-y: 7px;
+  background-color: #fff;
+  width:100px;
+}

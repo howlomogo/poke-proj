@@ -31,14 +31,14 @@ function ListItem(props) {
         <div className="list-item-circle-overlay"/>
 
         <div className="relative z-10">
-          <h4 className="absolute text-2xl font-medium">
+          <h3 className="absolute text-3xl font-medium opacity-70 z-0">
             {props.pokedexNumber}
-          </h4>
+          </h3>
           
           <img
             src={props.image}
             alt="Pokemon"
-            className="w-2/3 mx-auto"
+            className="w-2/3 mx-auto z-1 relative"
           />
 
           <div className="flex items-center justify-between">

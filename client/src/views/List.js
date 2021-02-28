@@ -18,12 +18,13 @@ const List = () => {
     //...Other filters
   })
 
-  const [showPerPage, setShowPerPage] = useState("10")
+  const [showPerPage, setShowPerPage] = useState("12")
 
   const [resultsData, setResultsData] = useState({
     results: [],
     pagination: [],
-    page: defaultPageNumber
+    page: defaultPageNumber,
+    total: 0
   })
 
   // ComponentDidMount
@@ -55,7 +56,8 @@ const List = () => {
         setResultsData({
           results: res.data.results,
           pagination: res.data.pagination,
-          page: page
+          page: page,
+          total: res.data.total
         })
       })
     
@@ -88,6 +90,8 @@ const List = () => {
         setShowPerPage={setShowPerPage}
         showPerPage={showPerPage}
         defaultPageNumber={defaultPageNumber}
+        total={resultsData.total}
+        showingPerPage={_.get(resultsData, 'results.length', '0')} // Bit hacky here but basically this is the returned showing per page rather than the selected show per page
       />
 
       <div className="container mx-auto mt-8">
@@ -97,8 +101,8 @@ const List = () => {
         ) : (
           <React.Fragment>
             {/* Results */}
-            {resultsData.results &&
-              <div className="flex flex-wrap mb-2">
+            {_.get(resultsData, 'results.length', 0) > 0 &&
+              <div className="flex flex-wrap mb-10">
                 {resultsData.results.map(pokemon => {
                   return (
                     <ListItem
@@ -114,6 +118,10 @@ const List = () => {
             }
           </React.Fragment>
         )}
+
+        {!resultsLoading && _.get(resultsData, 'results.length', 0) < 1 &&
+          <h1 className="text-center text-xl mb-8">No Pokemon were found</h1>
+        }
 
         {/* Pagination */}
         <Pagination

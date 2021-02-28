@@ -67,7 +67,8 @@ exports.getResults = async function(req, res) {
 
     res.send({
       results: resultsListWithInfo,
-      pagination: pagination
+      pagination: pagination,
+      total: fullResultslist.length
     })
   } catch {
     res.send('ERROR')

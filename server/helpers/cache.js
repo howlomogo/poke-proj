@@ -8,9 +8,9 @@ exports.setCache = async function setCache(key, data) {
     // Stringify response to be able to set in redis
     const stringifiedResponse = JSON.stringify(data)
     
-    // Cache data to redis
+    // Cache data to redis with expiry of 24h
     // console.log(`Setting cache for ${key}...`)
-    client.setex(key, 3600, stringifiedResponse, (err) => {
+    client.setex(key, 86400, stringifiedResponse, (err) => {
       if(err) {
         console.log(`There was an error SETTING cache for ${key} - ${err}`)
         throw err
@@ -30,10 +30,10 @@ exports.getCache = async function getCache(key) {
       }
   
       if(data !== null) {
-        // console.log(`Returning cached data for ${key}...`)
+        console.log(`Returning cached data for ${key}...`)
         resolve(JSON.parse(data))
       } else {
-        // console.log(`${key} not cached...`)
+        console.log(`${key} not cached...`)
         resolve(null)
       }
     })
