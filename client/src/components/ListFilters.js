@@ -28,7 +28,6 @@ function ListFilters(props) {
 
   // ComponentDidMount
   useEffect(() => {
-    // NOTE: This is NOT run in order as useEffect doesn't support promises...
     handleSetFilterOptions()
   }, [])
 

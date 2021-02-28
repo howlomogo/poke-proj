@@ -108,26 +108,26 @@ function Pokemon() {
             <div>              
               <div className="mb-6">
                 <h4 className="text-2xl capitalize font-medium">Types</h4>
-                {/* <hr className="border-1 mb-2 border-dashed border-gray-500 w-2/3" /> */}
-
-                {pokemon.types.map(type => {
+                
+                {pokemon.types.map((type, i) => {
                   return (
-                    <p key={type.type.name} className="capitalize">{type.type.name}</p>
+                    <span key={type.type.name} className="capitalize">
+                      {type.type.name}
+                      {i != pokemon.types.length -1 &&
+                        <span>, </span>
+                      }
+                    </span>
                   )
                 })}
               </div>
 
               <div className="mb-6">
                 <h4 className="text-2xl capitalize font-medium">Description</h4>
-                {/* <hr className="border-1 mb-2 border-dashed border-gray-500 w-2/3" /> */}
-
                 <p>{pokemon.description}</p>
               </div>
 
               <div>
                 <h4 className="text-2xl capitalize font-medium">Measurements</h4>
-                {/* <hr className="border-1 mb-2 border-dashed border-gray-500 w-2/3" /> */}
-
                 <p>Height: {pokemon.height * 10}cm</p>
                 <p>Weight: {pokemon.weight / 10}kg</p>
               </div>

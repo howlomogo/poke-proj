@@ -1,11 +1,23 @@
 function Home() {
   return (
     <div className="container mx-auto mt-12 mb-16">
-      <h3 className="text-3xl mb-4">About Poke Proj</h3>
-
+      <h3 className="text-3xl">About Poke Proj</h3>
+      
       <p className="mb-4">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean eros ante, egestas ac finibus vitae, porttitor interdum ligula. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sed justo sit amet nibh aliquet sodales. Donec nec congue ante. Pellentesque aliquam sagittis arcu, sit amet tempor orci viverra in. Vestibulum sagittis faucibus augue nec auctor. Interdum et malesuada fames ac ante ipsum primis in faucibus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus porttitor erat tortor, non blandit urna varius a. In ex mauris, aliquam ut tristique vitae, vestibulum ut eros. Sed lacinia faucibus ligula, eu iaculis sapien ultricies a. Phasellus ligula ante, suscipit finibus ante in, faucibus suscipit diam.
+        An app which lists all pokemon in the list view, Using React with Hooks and tailwind CSS on the front end, Using express with redis caching on the backend
       </p>
+      
+      <h3 className="text-xl">Todos</h3>
+
+      <ul className="list-disc mb-4 ml-8">
+        <li>Add more filters / different seatch pages i.e. search by Abilities etc</li>
+        <li>Likely add routing to url so we can deep nest links, will require slight restructure to do this</li>
+        <li>Add auto updating, i.e. click filter it will auto filter, same with show per page etc</li>
+        <li>Add search</li>
+        <li>Set up DB for users to log in / out</li>
+        <li>Add functionality for users to save / view their pokemon</li>
+        <li>Add more info to Pokemon specific page i.e. evolution chains, habitats etc</li>
+      </ul>
 
       <p className="mb-4">
         Vivamus quis molestie risus. Ut vitae rhoncus turpis. Aliquam orci elit, commodo in varius vel, fermentum efficitur odio. Cras consectetur, nibh a luctus mollis, diam lacus laoreet nisi, ac suscipit tortor est ut massa. Morbi dignissim a est sit amet venenatis. Ut aliquam purus a justo dignissim, ut accumsan dui hendrerit. Mauris turpis turpis, ornare id nibh nec, placerat vehicula ex. Donec lobortis consectetur feugiat. Aliquam sit amet hendrerit sapien. Interdum et malesuada fames ac ante ipsum primis in faucibus. Etiam pellentesque mi velit, at tempor urna lobortis vitae. Sed eu vulputate turpis, eget elementum nunc.
