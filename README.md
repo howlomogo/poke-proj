@@ -2,6 +2,11 @@
 - Using React with Hooks and tailwind CSS on the front end
 - Using express with redis caching on the backend
 
+To Run
+- Run Redis "redis-server"
+- "npm run server"
+- "npm run client" (client can be run on PORT 3001)
+
 TODOS
 - Add more filters / different seatch pages i.e. search by Abilities etc
 - Likely add routing to url so we can deep nest links, will require slight restructure to do this
